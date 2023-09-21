@@ -1,0 +1,11 @@
+User,QuestionID,Question,Options,Correct,Category,SecondsTakenToAnswer,Datetime
+Michael8pho,3,Which of these is a method hackers use to trick individuals into revealing confidential information?,Phishing|Snorkeling|Fishing|E-fishing,True,Phishing and Social Engineering,30,2023-09-17 15:45:30
+Michael8pho,4,What does 'social engineering' in the context of cybersecurity?,Building social media platforms|Manipulating people into revealing confidential information|Designing systems for social good|Managing social media accounts,False,Phishing and Social Engineering,41,2023-09-17 15:46:30
+User2,5,What is a firewall used for in cybersecurity?,Cooking food|Blocking unauthorized access|Sending emails|Creating social media accounts,True,Network Security,25,2023-09-17 16:00:15
+User2,6,Which programming language is commonly used for web development?,Java|Python|C++|JavaScript,True,Web Development,20,2023-09-17 16:15:45
+User3,7,What is the purpose of encryption in cybersecurity?,Decoding messages|Hiding information from hackers|Increasing internet speed|Creating secure passwords,True,Cryptography,35,2023-09-17 17:30:22
+User3,8,What does 'DDoS' stand for in cybersecurity?,Digital Data Overload Service|Distributed Denial of Service|Dangerous Data Security|Direct Data Outage Service,True,Cyber Attacks,28,2023-09-17 17:45:55
+User4,9,What is the primary purpose of a VPN in cybersecurity?,Providing free internet access|Securing network communications|Blocking websites|Creating social media profiles,True,Network Security,42,2023-09-17 18:30:10
+User4,10,Which of these is NOT a type of malware?,Ransomware|Antivirus|Trojan|Antispyware,False,Malware and Cyber Attacks,38,2023-09-17 18:45:45
+User5,11,What is the main purpose of a firewall?,Blocking unauthorized access|Speeding up internet connection|Storing data|Boosting system performance,True,Network Security,33,2023-09-17 19:00:20
+User5,12,Which type of attack involves overwhelming a system with data?,DDoS attack|Phishing attack|Man-in-the-middle attack,True,Malware and Cyber Attacks,29,2023-09-17 19:15:55
