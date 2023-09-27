@@ -1,5 +1,5 @@
 import pandas as pd 
-from helpers import select_user
+from DataExtraction.GenerateGraphs.helpers import select_user
 
 df_all_users = pd.read_csv("user_data.csv")
 pd.set_option('display.max_columns', None)
