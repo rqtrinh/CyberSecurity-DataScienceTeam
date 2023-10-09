@@ -1,3 +1,22 @@
+
 h1{
+    font-family: Arial, sans-serif;
+    color: rgb(255, 255, 255); 
     text-align: center;
+}
+
+body {
+    background-image: url('https://scitechdaily.com/images/Hacking-Cybersecurity.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.graph-container {
+    /* border for the graphs to show */
+    background-color: rgba(255, 255, 255, 0.6); 
+    border: 10px solid rgba(255, 255, 255, 0.6); 
+    padding: 20px; 
+    width: 80%; 
+    margin: 0 auto; 
 }
