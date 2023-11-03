@@ -43,7 +43,7 @@ def get_category_recommendations(user_id, num_recommendations=2):
         category_scores[category] = (cosine_sim[user_index] * data['weighted_avg']).mean()
 
     # Get the indices of the top categories
-    top_category_indices = sorted(category_scores, key=category_scores.get, reverse=True)[:num_recommendations]
+    top_category_indices = sorted(category_scores, key=category_scores.get)[:num_recommendations]
 
     return top_category_indices
 
