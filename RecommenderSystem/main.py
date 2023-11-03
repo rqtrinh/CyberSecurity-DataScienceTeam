@@ -48,7 +48,7 @@ def get_category_recommendations(user_id, num_recommendations=2):
     return top_category_indices
 
 # Test the recommender system for a specific user
-user_id = "User6"
+user_id = "User3"
 category_recommendations = get_category_recommendations(user_id)
 print(f"Recommended categories for {user_id} to work on:")
 print(category_recommendations)
