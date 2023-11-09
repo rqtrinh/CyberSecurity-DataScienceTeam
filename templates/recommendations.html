@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>User Selection and Recommendations</h1>
+
+    <form id="userForm">
+        <label for="user_id">Select a user:</label>
+        <input type="text" id="user_id" name="user_id" placeholder="Enter User ID">
+        <button type="button" onclick="recommend()">Submit</button>
+    </form>
+
+    <h2 id="resultHeader">Recommendations for <span id="userResult"></span></h2>
+
+    <ul id="recommendationsList">
+        <!-- Recommendations will be dynamically added here -->
+    </ul>
+
+    <script>
+        function recommend() {
+            var userId = document.getElementById('user_id').value;
+
+            if (userId) {
+                fetch('/recommend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'user_id=' + userId,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('userResult').innerText = data.user_id;
+                    document.getElementById('resultHeader').style.display = 'block';
+
+                    var recommendationsList = document.getElementById('recommendationsList');
+                    recommendationsList.innerHTML = '';
+
+                    data.recommendations.forEach(function (recommendation) {
+                        var listItem = document.createElement('li');
+                        listItem.innerText = recommendation;
+                        recommendationsList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+</body>
+</html>

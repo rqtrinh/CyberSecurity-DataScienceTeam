@@ -22,6 +22,7 @@ def generate_scatter_plot(df):
     plt.ylim(0, 110)
     plt.title("Percentage of Correct")
     plt.savefig('WebPage/Graphs/scatter_plot.png')
+    plt.savefig('static/scatter_plot.png')
 
 def generate_duration_correct(df):
     # Scatter plot for Time vs. Correctness
@@ -43,6 +44,7 @@ def generate_duration_correct(df):
 
     # Save the plot as an image
     plt.savefig('WebPage/Graphs/time-taken-vs-correctness-users.png')
+    plt.savefig('static/time-taken-vs-correctness-users.png')
 
 def generate_duration_correct_user(df):
     # Get a list of unique users
@@ -73,6 +75,7 @@ def generate_duration_correct_user(df):
         # plt.show()
 
         plt.savefig('WebPage/Graphs/time-taken-vs-correctness.png')
+        plt.savefig('static/time-taken-vs-correctness.png')
 
 def generate_pi_chart(df):
     # 1. Category Distribution
@@ -81,6 +84,7 @@ def generate_pi_chart(df):
     plt.pie(category_counts, labels=category_counts.index, autopct='%1.1f%%', startangle=90)
     plt.title('Category Distribution')
     plt.savefig('WebPage/Graphs//category_distribution.png')
+    plt.savefig('static/category_distribution.png')
     plt.clf()
 
     # 2. User Performance (Combined)
@@ -94,6 +98,7 @@ def generate_pi_chart(df):
     plt.pie(user_performance_sizes, labels=user_performance_labels, autopct='%1.1f%%', startangle=90)
     plt.title('Overall User Performance')
     plt.savefig('WebPage/Graphs//overall_user_performance.png')
+    plt.savefig('static/overall_user_performance.png')
     plt.clf()
 
     # 3. Question Answering by Month
@@ -105,6 +110,7 @@ def generate_pi_chart(df):
     plt.pie(month_counts, labels=month_counts.index, autopct='%1.1f%%', startangle=90)
     plt.title('Question Answering by Month')
     plt.savefig('WebPage/Graphs//question_answering_by_month.png')
+    plt.savefig('static/question_answering_by_month.png')
     plt.clf()
 
     # 4. Correct vs. Incorrect Ratios (Combined)
@@ -118,6 +124,7 @@ def generate_pi_chart(df):
     plt.pie(user_performance_sizes, labels=user_performance_labels, autopct='%1.1f%%', startangle=90)
     plt.title('Correct vs. Incorrect Answers (All Users)')
     plt.savefig('WebPage/Graphs//correct_vs_incorrect.png')
+    plt.savefig('static/correct_vs_incorrect.png')
     plt.clf()
 
     # 5. Correctness Distribution by Category (Combined)
@@ -127,6 +134,7 @@ def generate_pi_chart(df):
     plt.pie(category_correctness, labels=category_correctness.index, autopct='%1.1f%%', startangle=90)
     plt.title('Correctness Distribution by Category (All Users)')
     plt.savefig('WebPage/Graphs//correctness_distribution_by_category.png')
+    plt.savefig('static/correctness_distribution_by_category.png')
     plt.clf()
 
     # 6. Answering Speed Distribution
@@ -138,6 +146,7 @@ def generate_pi_chart(df):
     plt.pie(answering_speed_counts, labels=answering_speed_counts.index, autopct='%1.1f%%', startangle=90)
     plt.title('Answering Speed Distribution')
     plt.savefig('WebPage/Graphs//answering_speed_distribution.png')
+    plt.savefig('static/answering_speed_distribution.png')
     plt.clf()
 
 def correct_vs_category(df):
@@ -171,3 +180,4 @@ def correct_vs_category(df):
     plt.legend(["Correct", "Incorrect"])
     # printing in graph png
     plt.savefig("WebPage/Graphs/correct-vs-category.png")
+    plt.savefig("static/correct-vs-category.png")

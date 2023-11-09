@@ -1,11 +1,21 @@
+import os
 import pandas as pd
 from sklearn.metrics.pairwise import linear_kernel
 
 # Load the CSV data into a DataFrame
-df = pd.read_csv('test_user_data.csv')
+def find_file(start_path, target_file):
+    for root, dirs, files in os.walk(start_path):
+        if target_file in files:
+            return os.path.join(root, target_file)
+
+# Assuming you want to find 'test_user_data.csv' in the current directory and its subdirectories
+file_path = find_file(os.getcwd(), 'test_user_data.csv')
+df = pd.read_csv(file_path)
+
 
 def get_category_recommendations(user_id, num_recommendations=2):
     # Filter data for the given user
+    n = len(df)
     user_data = df[df['User'] == user_id]
 
     # Calculate the user's average time to answer
@@ -35,7 +45,11 @@ def get_category_recommendations(user_id, num_recommendations=2):
     cosine_sim = linear_kernel(user_features, df_features)
 
     # Get the user index
-    user_index = user_data.index[0]
+    user_index = 0
+    print("User Index:", user_index)
+    print("Cosine Sim Size:", cosine_sim.shape)
+    print("User Data Shape:", user_data.shape)
+    print("Category Data:", category_data)
 
     # Calculate the mean combined score for each category based on user similarity
     category_scores = {}
@@ -47,8 +61,9 @@ def get_category_recommendations(user_id, num_recommendations=2):
 
     return top_category_indices
 
-# Test the recommender system for a specific user
-user_id = "User3"
-category_recommendations = get_category_recommendations(user_id)
-print(f"Recommended categories for {user_id} to work on:")
-print(category_recommendations)
+if __name__ == "__main__":
+    # Test the recommender system for a specific user
+    user_id = "User4"
+    category_recommendations = get_category_recommendations(user_id)
+    print(f"Recommended categories for {user_id} to work on:")
+    print(category_recommendations)
