@@ -22,9 +22,10 @@ def generate_scatter_plot(df):
     plt.xlabel("Players")
     plt.ylabel("Percentage Correct")
     plt.ylim(0, 110)
-    plt.title("Percentage of Correct")
+    plt.title("Player Percentages")
     plt.savefig('WebPage/Graphs/scatter_plot.png')
     plt.savefig('static/scatter_plot.png')
+    plt.clf()
 
 def generate_duration_correct(df):
     # Scatter plot for Time vs. Correctness
@@ -44,6 +45,7 @@ def generate_duration_correct(df):
     # Save the plot as an image
     plt.savefig('WebPage/Graphs/time-taken-vs-correctness-users.png')
     plt.savefig('static/time-taken-vs-correctness-users.png')
+    plt.clf()
 
 def generate_duration_correct_user(df):
     # Get a list of unique users
@@ -72,6 +74,7 @@ def generate_duration_correct_user(df):
 
         plt.savefig('WebPage/Graphs/time-taken-vs-correctness.png')
         plt.savefig('static/time-taken-vs-correctness.png')
+        plt.clf()
 
 def generate_pi_chart(df):
     # 1. Category Distribution
@@ -177,3 +180,4 @@ def correct_vs_category(df):
     # printing in graph png
     plt.savefig("WebPage/Graphs/correct-vs-category.png")
     plt.savefig("static/correct-vs-category.png")
+    plt.clf()
