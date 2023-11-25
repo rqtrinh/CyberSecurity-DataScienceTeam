@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -20,9 +22,10 @@ def generate_scatter_plot(df):
     plt.xlabel("Players")
     plt.ylabel("Percentage Correct")
     plt.ylim(0, 110)
-    plt.title("Percentage of Correct")
+    plt.title("Player Percentages")
     plt.savefig('WebPage/Graphs/scatter_plot.png')
     plt.savefig('static/scatter_plot.png')
+    plt.clf()
 
 def generate_duration_correct(df):
     # Scatter plot for Time vs. Correctness
@@ -39,43 +42,10 @@ def generate_duration_correct(df):
     # Display a legend
     plt.legend(['Correct', 'Incorrect'])
 
-    # Show the plot
-    # plt.show()
-
     # Save the plot as an image
     plt.savefig('WebPage/Graphs/time-taken-vs-correctness-users.png')
     plt.savefig('static/time-taken-vs-correctness-users.png')
-
-def generate_duration_correct_user(df):
-    # Get a list of unique users
-    unique_users = df['User'].unique()
-
-    # Set up subplots
-    fig, axs = plt.subplots(nrows=len(unique_users), figsize=(10, 6 * len(unique_users)), sharex=True)
-
-    # Loop through each user and create a scatter plot
-    for i, user in enumerate(unique_users):
-        user_data = df[df['User'] == user]
-        colors = np.where(user_data['Correct'] == True, 'green', 'red')  # Green for correct, red for incorrect
-
-        axs[i].scatter(user_data['SecondsTakenToAnswer'], user_data['Correct'], c=colors, alpha=0.7)
-
-        # Set labels and title
-        axs[i].set_xlabel('Seconds Taken to Answer')
-        axs[i].set_ylabel('Correctness (True/False)')
-        axs[i].set_title(f'Scatter Plot: Time vs. Correctness - User {user}')
-
-        # Display a legend
-        axs[i].legend(['Correct', 'Incorrect'])
-
-        # Adjust layout for better spacing
-        # plt.tight_layout()
-
-        # Show the plot
-        # plt.show()
-
-        plt.savefig('WebPage/Graphs/time-taken-vs-correctness.png')
-        plt.savefig('static/time-taken-vs-correctness.png')
+    plt.clf()
 
 def generate_pi_chart(df):
     # 1. Category Distribution
@@ -113,19 +83,20 @@ def generate_pi_chart(df):
     plt.savefig('static/question_answering_by_month.png')
     plt.clf()
 
-    # 4. Correct vs. Incorrect Ratios (Combined)
-    correct_answers = df['Correct'].sum()
-    incorrect_answers = len(df) - correct_answers
+    # Duplicate graph
+    # # 4. Correct vs. Incorrect Ratios (Combined)
+    # correct_answers = df['Correct'].sum()
+    # incorrect_answers = len(df) - correct_answers
 
-    user_performance_labels = ['Correct', 'Incorrect']
-    user_performance_sizes = [correct_answers, incorrect_answers]
+    # user_performance_labels = ['Correct', 'Incorrect']
+    # user_performance_sizes = [correct_answers, incorrect_answers]
 
-    plt.figure(figsize=(8, 8))
-    plt.pie(user_performance_sizes, labels=user_performance_labels, autopct='%1.1f%%', startangle=90)
-    plt.title('Correct vs. Incorrect Answers (All Users)')
-    plt.savefig('WebPage/Graphs//correct_vs_incorrect.png')
-    plt.savefig('static/correct_vs_incorrect.png')
-    plt.clf()
+    # plt.figure(figsize=(8, 8))
+    # plt.pie(user_performance_sizes, labels=user_performance_labels, autopct='%1.1f%%', startangle=90)
+    # plt.title('Correct vs. Incorrect Answers (All Users)')
+    # plt.savefig('WebPage/Graphs//correct_vs_incorrect.png')
+    # plt.savefig('static/correct_vs_incorrect.png')
+    # plt.clf()
 
     # 5. Correctness Distribution by Category (Combined)
     category_correctness = df.groupby('Category')['Correct'].mean()
@@ -181,3 +152,41 @@ def correct_vs_category(df):
     # printing in graph png
     plt.savefig("WebPage/Graphs/correct-vs-category.png")
     plt.savefig("static/correct-vs-category.png")
+    plt.clf()
+
+# Unique to user graphs
+def generate_duration_correct_user(df, user):
+    # Selected user
+    user_data = df[df['User'] == user]
+
+    colors = np.where(user_data['Correct'] == True, 'green', 'red')  # Green for correct, red for incorrect
+
+    plt.scatter(user_data['SecondsTakenToAnswer'], user_data['Correct'], c=colors, alpha=0.7)
+
+    # Set labels and title
+    plt.xlabel('Seconds Taken to Answer')
+    plt.ylabel('Correctness (True/False)')
+    plt.title(f'Scatter Plot: Time vs. Correctness - User {user}')
+
+    # Display a legend
+    plt.legend(['Correct', 'Incorrect'])
+
+    plt.savefig("WebPage/Graphs/user_graph.png")
+    plt.savefig("static/user_graph.png")
+    plt.clf()
+
+def generate_percentage_user(df, user):
+    user_data = df[df['User'] == user]
+    correct_answers = user_data['Correct'].sum()
+    incorrect_answers = len(user_data) - correct_answers
+
+    user_performance_labels = ['Correct', 'Incorrect']
+    user_performance_sizes = [correct_answers, incorrect_answers]
+
+    plt.figure(figsize=(8, 8))
+    plt.pie(user_performance_sizes, labels=user_performance_labels, autopct='%1.1f%%', startangle=90)
+    plt.title(f'Correct vs. Incorrect Answers {user}')
+
+    plt.savefig("WebPage/Graphs/user_graph_2.png")
+    plt.savefig("static/user_graph_2.png")
+    plt.clf()
