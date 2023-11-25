@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 from RecommenderSystem.main import get_category_recommendations
+from DataExtraction.ConvertJSON.convertToCSV import convert_json_csv
+from DataExtraction.GenerateGraphs.extract_data import extract_data
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
+    convert_json_csv()
+    extract_data()
+
     return render_template("index.html")
 
 @app.route("/recommend", methods=['GET'])

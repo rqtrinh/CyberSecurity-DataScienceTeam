@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -39,9 +41,6 @@ def generate_duration_correct(df):
     # Display a legend
     plt.legend(['Correct', 'Incorrect'])
 
-    # Show the plot
-    # plt.show()
-
     # Save the plot as an image
     plt.savefig('WebPage/Graphs/time-taken-vs-correctness-users.png')
     plt.savefig('static/time-taken-vs-correctness-users.png')
@@ -70,9 +69,6 @@ def generate_duration_correct_user(df):
 
         # Adjust layout for better spacing
         # plt.tight_layout()
-
-        # Show the plot
-        # plt.show()
 
         plt.savefig('WebPage/Graphs/time-taken-vs-correctness.png')
         plt.savefig('static/time-taken-vs-correctness.png')
