@@ -47,6 +47,22 @@
                         listItem.innerText = recommendation;
                         recommendationsList.appendChild(listItem);
                     });
+
+                    // Have to remove elements just in case user presses submit twice
+                    document.querySelectorAll('.graph').forEach(function(element) {
+                        element.remove();
+                    });
+                    
+                    // Getting the two user specific graphs and adding it to html
+                    var durationCorrect = document.createElement('img');
+                    durationCorrect.src = '../static/user_graph.png';
+                    durationCorrect.className = 'graph';
+                    document.body.appendChild(durationCorrect);
+
+                    var percentageCorrect = document.createElement('img');
+                    percentageCorrect.src = '../static/user_graph_2.png';
+                    percentageCorrect.className = 'graph';
+                    document.body.appendChild(percentageCorrect);
                 })
                 .catch(error => console.error('Error:', error));
             }
