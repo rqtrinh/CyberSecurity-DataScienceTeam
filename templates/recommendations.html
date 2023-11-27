@@ -30,6 +30,9 @@
         <!-- Recommendations will be dynamically added here -->
     </ul>
 
+    <!-- Container for the graphs -->
+    <div class="graph-container" id="graphContainer"></div>
+
     <script>
         function recommend() {
             var userId = document.getElementById('user_id').value;
@@ -56,22 +59,21 @@
                         recommendationsList.appendChild(listItem);
                     });
 
-                    // Have to remove elements just in case user presses submit twice
-                    document.querySelectorAll('.graph').forEach(function(element) {
-                        element.remove();
-                    });
-                    
-                    // Getting the two user specific graphs and adding it to html
+                    // Clear previous graphs
+                    var graphContainer = document.getElementById('graphContainer');
+                    graphContainer.innerHTML = '';
+
+                    // Getting the two user-specific graphs and adding them to the graph container
                     var timestamp = new Date().getTime();
                     var durationCorrect = document.createElement('img');
                     durationCorrect.src = '../static/user_graph.png?' + timestamp;
                     durationCorrect.className = 'graph';
-                    document.body.appendChild(durationCorrect);
+                    graphContainer.appendChild(durationCorrect);
 
                     var percentageCorrect = document.createElement('img');
                     percentageCorrect.src = '../static/user_graph_2.png?' + timestamp;
                     percentageCorrect.className = 'graph';
-                    document.body.appendChild(percentageCorrect);
+                    graphContainer.appendChild(percentageCorrect);
                 })
                 .catch(error => console.error('Error:', error));
             }
