@@ -54,13 +54,14 @@
                     });
                     
                     // Getting the two user specific graphs and adding it to html
+                    var timestamp = new Date().getTime();
                     var durationCorrect = document.createElement('img');
-                    durationCorrect.src = '../static/user_graph.png';
+                    durationCorrect.src = '../static/user_graph.png?' + timestamp;
                     durationCorrect.className = 'graph';
                     document.body.appendChild(durationCorrect);
 
                     var percentageCorrect = document.createElement('img');
-                    percentageCorrect.src = '../static/user_graph_2.png';
+                    percentageCorrect.src = '../static/user_graph_2.png?' + timestamp;
                     percentageCorrect.className = 'graph';
                     document.body.appendChild(percentageCorrect);
                 })
