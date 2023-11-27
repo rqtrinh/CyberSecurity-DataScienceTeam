@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    convert_json_csv()
-    extract_data()
+    #convert_json_csv()
+    #extract_data()
 
     return render_template("index.html")
 

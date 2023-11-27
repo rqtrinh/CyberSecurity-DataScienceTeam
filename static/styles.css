@@ -13,10 +13,19 @@ body {
 }
 
 .graph-container {
-    /* border for the graphs to show */
-    background-color: rgba(255, 255, 255, 0.6); 
-    border: 10px solid rgba(255, 255, 255, 0.6); 
-    padding: 20px; 
-    width: 80%; 
-    margin: 0 auto; 
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 10px solid rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
+
+.graph-container img {
+    width: calc(50% - 20px); /* Calculate the width for each image with some spacing */
+    margin-bottom: 20px; /* Add some margin between the rows */
+}
+
+
